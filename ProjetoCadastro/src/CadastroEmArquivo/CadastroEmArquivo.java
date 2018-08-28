@@ -3,18 +3,17 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class CadastroEmArquivo {
-	
+
 	private String nomeDoArquivo;
 	private String nome;
 	private String dataNascimento;
 	private String cpf;
 	private String celular;	
 	private int posicao;
-	
-	
+
 	public CadastroEmArquivo() {
 	}
-	
+
 	public CadastroEmArquivo(String nome, String dataNascimento, String cpf,
 			String celular, int posicao) {
 		this.nome = nome;
@@ -67,13 +66,13 @@ public class CadastroEmArquivo {
 		this.celular = celular;
 	}
 
-
-	public int getPosicao() {
+	public String getPosicao() {
+		String posicao = String.format ("%03d", this.posicao);
 		return posicao;
 	}
 
 	public void setPosicao(int posicao) {
-		this.posicao = posicao;
+		this.posicao = posicao;	
 	}
 
 	public String getNomeDoArquivo() {
@@ -83,9 +82,6 @@ public class CadastroEmArquivo {
 	public void setNomeDoArquivo(String nomeDoArquivo) {
 		this.nomeDoArquivo = nomeDoArquivo;
 	}
-	
-	
 
-		
-	}
-	
+}
+
