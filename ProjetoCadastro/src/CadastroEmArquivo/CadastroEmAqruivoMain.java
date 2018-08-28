@@ -11,10 +11,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
+import javax.swing.text.MaskFormatter;
 
 public class CadastroEmAqruivoMain {
 	private Scanner entrada;
@@ -41,7 +44,7 @@ public class CadastroEmAqruivoMain {
 			if (opcao.equals("1")) {
 				cadastrar();
 			} else if (opcao.equals("2")) {
-				this.importar(cadastroEmArquivo);
+				listarCadastros();
 			} else if (opcao.equals("3")) {
 				removerCadastro();
 			} else if (opcao.equals("4")) {
@@ -76,17 +79,11 @@ public class CadastroEmAqruivoMain {
 			cad.setDataNascimento(this.data());
 			textInput("");
 
-			cad.setCpf(textInput("Digite o CPF: "));
+			cad.setCpf(this.validarCPF());
+			textInput("");
 
-			String opcaoCelular = textInput("Deseja cadastrar um celular? (S/N)?");
-			if (opcaoCelular.equalsIgnoreCase("s")) {
-				cad.setCelular(textInput("Digite o número de Celular: "));
-			} else if (opcaoCelular.equalsIgnoreCase("n")) {
-				System.out.println("Ok!");
-				cad.setCelular(null);
-			} else {
-				System.out.println("Opção inválida! Celular não cadastrado!");
-			}
+			cad.setCelular(this.formatarCelular());
+			textInput("");
 
 			String cadastrar = textInput("Adicionar cadastro (S/N)?");
 			if (cadastrar.equalsIgnoreCase("s")) {
@@ -102,25 +99,10 @@ public class CadastroEmAqruivoMain {
 		}
 	}
 
-	//-----Listar
-	public void importar(ArrayList<CadastroEmArquivo> cadastroimport) {
-		try {
-			FileInputStream cad = new FileInputStream(this.caminhoDoArquivo);
-			InputStreamReader input = new InputStreamReader(cad);
-			BufferedReader lerCadastro = new BufferedReader(input);
-			String linha = lerCadastro.readLine();
-			if (linha == null) {
-				System.out.println("Cadastro vazio");
-			}
-			while (linha != null) {
-				System.out.printf("%s\n", linha);
-				linha = lerCadastro.readLine();
-			}
-			cad.close();
-		} catch (IOException e) {
-			System.err.printf("Erro na abertura do arquivo: %s.",
-					e.getMessage());
-		}
+	// ---------------------------------Listar---------------------------------//
+	private void listarCadastros() {
+		this.importar(cadastroEmArquivo);
+
 	}
 
 	// ------------------Remover Cadastro--------------------------//
@@ -128,7 +110,6 @@ public class CadastroEmAqruivoMain {
 		boolean confere = true;
 		File arq = new File(this.caminhoDoArquivo);
 		int cod2;
-		int count = 0;
 		String posicao;		
 
 		try{
@@ -140,11 +121,12 @@ public class CadastroEmAqruivoMain {
 			System.out.println("Indique o número de cadastro para remover: ");
 			cod2 = this.verificaCodigo();
 			posicao = ("Posição: "+cod2).trim();
+			System.out.println(cod2 + posicao);
 
 			while (linha != null){
 				if (linha.contains(posicao)== false){		
 					salvar.add(linha);
-					System.out.println(linha);					
+					System.out.println(linha);
 				}
 				linha = br.readLine();
 			}
@@ -240,7 +222,27 @@ public class CadastroEmAqruivoMain {
 		}
 		return cod;
 	}
-
+	//-----abre o arquivo	
+	public void importar(ArrayList<CadastroEmArquivo> cadastroimport) {
+		try {
+			FileInputStream cad = new FileInputStream(this.caminhoDoArquivo);
+			InputStreamReader input = new InputStreamReader(cad);
+			BufferedReader lerCadastro = new BufferedReader(input);
+			String linha = lerCadastro.readLine();
+			if (linha == null) {
+				System.out.println("Cadastro vazio");
+			}
+			while (linha != null) {
+				System.out.printf("%s\n", linha);
+				linha = lerCadastro.readLine();
+			}
+			cad.close();
+			lerCadastro.close();
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo: %s.",
+					e.getMessage());
+		}
+	}
 	//----Pega a data em formato string de números, verifica se é data válida e reconverte para string com formato específico 
 	private String data() {
 		boolean confere = true;
@@ -250,6 +252,7 @@ public class CadastroEmAqruivoMain {
 			try {
 				SimpleDateFormat dataFormatIn = new SimpleDateFormat("ddMMyyyy");
 				System.out.println("Digite a data de nascimento com o formato: ddmmaaaa");
+				dataFormatIn.setLenient(false);
 				Date date = dataFormatIn.parse(entrada.next());
 				dtns = date;
 				confere = false;
@@ -262,18 +265,16 @@ public class CadastroEmAqruivoMain {
 			SimpleDateFormat dataFormatOut = new SimpleDateFormat("dd/MM/yyyy");
 			String dataToString = dataFormatOut.format(dtns); 
 			dataNasc = dataToString;
-
 		} catch (Exception e){
 			e.printStackTrace();
 		}
-
 		return dataNasc;
 	}
 	//--------------Escrever
 	public void escreverNoArquivo(){
 
 		try{			
-			FileWriter fw = new FileWriter(this.caminhoDoArquivo, false);
+			FileWriter fw = new FileWriter(this.caminhoDoArquivo, true);
 			PrintWriter pw = new PrintWriter(fw);
 			for (CadastroEmArquivo cadArq : cadastroEmArquivo){
 				pw.println(cadArq.toString());
@@ -292,14 +293,14 @@ public class CadastroEmAqruivoMain {
 		try {
 			File arquivoCad = new File(this.caminhoDoArquivo);
 
-			long tamanhoCad = arquivoCad.length();
+			long tamanhoCad = arquivoCad. length();
 			FileInputStream fs = new FileInputStream(arquivoCad);
 			DataInputStream in = new DataInputStream(fs);
 
 			LineNumberReader lineRead = new LineNumberReader(new InputStreamReader(in));
 			lineRead.skip(tamanhoCad);				
 			numeroLinhas = lineRead.getLineNumber() + 1;
-			//	System.out.println("O ARQUIVO CONTEM " + numeroLinhas + " LINHAS!!!!!!!");
+			System.out.println("O ARQUIVO CONTEM " + numeroLinhas + " LINHAS!!!!!!!");
 
 		} catch (IOException e) {
 
@@ -307,9 +308,7 @@ public class CadastroEmAqruivoMain {
 		return numeroLinhas;
 	}
 	public void gerarArquivo(){
-
 		CadastroEmArquivo cad = new CadastroEmArquivo();
-
 		cad.setNomeDoArquivo(textInput("Digite o nome do arquivo a ser criado ou lido"));
 		String path = "C:\\Users\\" + System.getProperty("user.name").toString()+ "\\Desktop\\" + cad.getNomeDoArquivo()+".txt" ;
 		cad.setNomeDoArquivo(path);
@@ -321,7 +320,69 @@ public class CadastroEmAqruivoMain {
 		}
 		catch (IOException e){
 			System.out.println("Erro na criação do arquivo");
-		}
+		}		
 	}
 
+	private String validarCPF() {
+		String CPF = null;
+
+		CadastroEmArquivo cad = new CadastroEmArquivo();
+		boolean confere = true;
+
+		while (confere){			
+			try{
+				System.out.println("Digite o CPF (somente números)");
+				CPF = entrada.next();
+				ValidaCPF.isCPF(CPF);			
+				cad.setCpf(ValidaCPF.imprimeCPF(CPF));				
+				CPF = ValidaCPF.imprimeCPF(CPF);
+				confere = false;
+			}
+			catch (Exception e){
+				System.out.printf("Erro, CPF invalido !!!\n");
+				confere = true;
+			}			
+		}return CPF;
+	} 
+	public static String formatString(String campo, String mascara) {
+		MaskFormatter mf;
+		try {
+			mf = new MaskFormatter(mascara);
+			mf.setValueContainsLiteralCharacters(false);
+			return mf.valueToString(campo);
+		} catch (ParseException ex) {
+			return campo;
+		}
+	}
+	private String formatarCelular (){
+		String celularFormatado = null;
+		String opcaoCelular = textInput("Deseja cadastrar um celular? (S/N)?");
+		boolean confere =true;	
+		if (opcaoCelular.equalsIgnoreCase("s")) {
+			while (confere){
+				try{      
+					System.out.println("Digite o número de Celular: ");
+					String cf = entrada.next();
+					if(cf.matches("[1-9][1-9][2-9][0-9]{8}")){
+						cf = formatString(cf,"(##) #####-####");
+						celularFormatado = cf;
+						System.out.println(celularFormatado);
+						confere = false;					
+					}else {
+						confere = true;
+					}
+				}catch (Exception e){
+					System.out.println("Número em formato inválido");
+					confere = true;
+				}
+			}
+		}
+		else if (opcaoCelular.equalsIgnoreCase("n")) {
+			System.out.println("Ok!");
+			celularFormatado = (null);
+		} else {
+			System.out.println("Opção inválida! Celular não cadastrado!");
+		}
+		return celularFormatado;
+	}
 }

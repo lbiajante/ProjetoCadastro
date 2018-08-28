@@ -16,7 +16,7 @@ public class CadastroEmArquivo {
 	}
 	
 	public CadastroEmArquivo(String nome, String dataNascimento, String cpf,
-			String celular) {
+			String celular, int posicao) {
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
