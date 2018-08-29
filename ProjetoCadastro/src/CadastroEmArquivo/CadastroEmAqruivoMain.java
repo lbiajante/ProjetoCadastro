@@ -35,11 +35,11 @@ public class CadastroEmAqruivoMain {
 		entrada = new Scanner(System.in);
 		execute = true;
 		cadastroEmArquivo = new ArrayList<CadastroEmArquivo>();
-		System.out.println("BEM VINDO AO CADASTRO DE USU¡RIOS");
+		System.out.println("BEM VINDO AO CADASTRO DE USU√ÅRIOS");
 		System.out.println("");
 		this.gerarArquivo();
 
-		// --------------- execuÁ„o do menu
+		// --------------- execu√ß√£o do menu
 		while (execute) {
 			String opcao = menu();
 			if (opcao.equals("1")) {
@@ -55,14 +55,14 @@ public class CadastroEmAqruivoMain {
 				System.out.println("");
 				execute = false;
 			} else {
-				System.out.println("OpÁ„o Inv·lida!!!");
+				System.out.println("Op√ß√£o Inv√°lida!!!");
 			}
 		}
 	}
 
 	// -----------------------------Menu-----------------------------//
 	private String menu() {
-		System.out.println("Selecione a opÁ„o:");
+		System.out.println("Selecione a op√ß√£o:");
 		System.out.println("1 - Novo cadastro");
 		System.out.println("2 - Listar cadastros");
 		System.out.println("3 - Remover cadastro");
@@ -76,7 +76,7 @@ public class CadastroEmAqruivoMain {
 
 		boolean cadastrando = true;
 		while (cadastrando) {
-			System.out.println("Cadastro de Usu·rio");
+			System.out.println("Cadastro de Usu√°rio");
 
 			cad.setPosicao(this.contarLinhas());
 			cad.setNome(textInput("Digite o nome: "));
@@ -96,7 +96,7 @@ public class CadastroEmAqruivoMain {
 			} else if (cadastrar.equalsIgnoreCase("n")) {
 				System.out.println("Cadastro ignorado!");
 			} else {
-				System.out.println("OpÁ„o inv·lida, cadastro ignorado!");
+				System.out.println("Op√ß√£o inv√°lida, cadastro ignorado!");
 			}
 
 			String continua = textInput("Continuar cadastrando (S/N)?");
@@ -105,7 +105,7 @@ public class CadastroEmAqruivoMain {
 			} else if (continua.equalsIgnoreCase("s")) {
 				cadastrando = true;
 			} else {
-				System.out.println("\nOpÁ„o inv·lida !!! \n");
+				System.out.println("\nOp√ß√£o inv√°lida !!! \n");
 				cadastrando = false;
 			}
 		}
@@ -128,15 +128,15 @@ public class CadastroEmAqruivoMain {
 			String linha = br.readLine();
 			ArrayList<String> salvar = new ArrayList<String>();
 			int j = 0;
-			System.out.println("Indique o n˙mero de cadastro para remover: ");
-			posicao = ("PosiÁ„o: " + String.format("%03d",
+			System.out.println("Indique o n√∫mero de cadastro para remover: ");
+			posicao = ("Posi√ß√£o: " + String.format("%03d",
 					this.verificaCodigo())).trim();
 
 			while (linha != null) {
 				if (linha.contains(posicao) == false) {
 					j++;
 					String posicaoAntiga = linha.substring(0, 12);
-					String posicaoNova = "PosiÁ„o: "
+					String posicaoNova = "Posi√ß√£o: "
 							+ String.format("%03d", j).trim();
 					String newLine = linha.replace(posicaoAntiga, posicaoNova);
 					salvar.add(newLine);
@@ -179,9 +179,9 @@ public class CadastroEmAqruivoMain {
 			BufferedReader br = new BufferedReader(fr);
 			String linha = br.readLine();
 			ArrayList<String> salvar = new ArrayList<String>();
-			System.out.println("Indique o n˙mero de cadastro para atualizar: ");
+			System.out.println("Indique o n√∫mero de cadastro para atualizar: ");
 			int cod2 = this.verificaCodigo();
-			posicao = ("PosiÁ„o: " + String.format("%03d", cod2));
+			posicao = ("Posi√ß√£o: " + String.format("%03d", cod2));
 
 			while (linha != null) {
 				if (linha.contains(posicao) == false) {
@@ -197,7 +197,7 @@ public class CadastroEmAqruivoMain {
 					textInput("");
 					cadastroEmArquivo.add(cad);
 					salvar.add(cad.toString());
-					System.out.println("AtualizaÁ„o realizada");
+					System.out.println("Atualiza√ß√£o realizada");
 				} else {
 				}
 				linha = br.readLine();
@@ -226,7 +226,7 @@ public class CadastroEmAqruivoMain {
 		System.out.println(label);
 		return entrada.nextLine();
 	}
-	// --------------verifica se codigo È inteiro v·lido
+	// --------------verifica se codigo √© inteiro v√°lido
 	public int verificaCodigo() {
 		int cod = 0;
 		boolean confere = true;
@@ -236,13 +236,13 @@ public class CadastroEmAqruivoMain {
 				cod = Integer.parseInt(codigo);
 				System.out.println(cod);
 				if (cod <= 0) {
-					System.out.println("O cÛdigo precisa ser maior que zero");
+					System.out.println("O c√≥digo precisa ser maior que zero");
 					confere = true;
 				} else {
 					confere = false;
 				}
 			} catch (Exception e) {
-				System.out.printf("VocÍ n„o digitou um n˙mero inteiro!\n");
+				System.out.printf("Voc√™ n√£o digitou um n√∫mero inteiro!\n");
 			}
 		}
 		return cod;
@@ -285,7 +285,7 @@ public class CadastroEmAqruivoMain {
 			while (linha != null) {
 				j++;
 				String posicaoAntiga = linha.substring(0, 12);
-				String posicaoNova = "PosiÁ„o: "
+				String posicaoNova = "Posi√ß√£o: "
 						+ String.format("%03d", j).trim();
 				String newLine = linha.replace(posicaoAntiga, posicaoNova);
 				salvar.add(newLine);
@@ -311,8 +311,8 @@ public class CadastroEmAqruivoMain {
 		}
 	}
 
-	// ----Pega a data em formato string de n˙meros, verifica se È data v·lida e
-	// reconverte para string com formato especÌfico
+	// ----Pega a data em formato string de n√∫meros, verifica se √© data v√°lida e
+	// reconverte para string com formato espec√≠fico
 	private String data() {
 		boolean confere = true;
 		Date dtns = null;
@@ -327,7 +327,7 @@ public class CadastroEmAqruivoMain {
 				dtns = date;
 				confere = false;
 			} catch (Exception e) {
-				System.out.println("Data inv·lida");
+				System.out.println("Data inv√°lida");
 			}
 		}
 		String dataNasc = null;
@@ -356,7 +356,7 @@ public class CadastroEmAqruivoMain {
 		}
 	}
 
-	// -------------Contador de PosiÁıes
+	// -------------Contador de Posi√ß√µes
 	public int contarLinhas() {
 		int numeroLinhas = 0;
 		try {
@@ -381,9 +381,10 @@ public class CadastroEmAqruivoMain {
 		CadastroEmArquivo cad = new CadastroEmArquivo();
 		cad.setNomeDoArquivo(textInput("Digite o nome do arquivo a ser criado ou lido"));
 
-		String path = "C:\\Users\\"
-				+ System.getProperty("user.name").toString() + "\\Desktop\\"
-				+ cad.getNomeDoArquivo() + ".txt";
+		String path = cad.getNomeDoArquivo()+".txt";
+	//	String path = "C:\\Users\\"
+		//		+ System.getProperty("user.name").toString() + "\\Desktop\\"
+			//	+ cad.getNomeDoArquivo() + ".txt";
 		cad.setNomeDoArquivo(path);
 		this.caminhoDoArquivo = path;
 		try {
@@ -391,7 +392,7 @@ public class CadastroEmAqruivoMain {
 			criadorDeArquivo.flush();
 			criadorDeArquivo.close();
 		} catch (IOException e) {
-			System.out.println("Erro na criaÁ„o do arquivo");
+			System.out.println("Erro na cria√ß√£o do arquivo");
 		}
 	}
 
@@ -403,7 +404,7 @@ public class CadastroEmAqruivoMain {
 
 		while (confere) {
 			try {
-				System.out.println("Digite o CPF (somente n˙meros)");
+				System.out.println("Digite o CPF (somente n√∫meros)");
 				CPF = entrada.next();
 				ValidaCPF.isCPF(CPF);
 				cad.setCpf(ValidaCPF.imprimeCPF(CPF));
@@ -436,7 +437,7 @@ public class CadastroEmAqruivoMain {
 		if (opcaoCelular.equalsIgnoreCase("s")) {
 			while (confere) {
 				try {
-					System.out.println("Digite o n˙mero de Celular: ");
+					System.out.println("Digite o n√∫mero de Celular: ");
 					String cf = entrada.next();
 					if (cf.matches("[1-9][1-9][2-9][0-9]{8}")) {
 						cf = formatString(cf, "(##) #####-####");
@@ -444,11 +445,11 @@ public class CadastroEmAqruivoMain {
 						System.out.println(celularFormatado);
 						confere = false;
 					} else {
-						System.out.println("N˙mero em formato inv·lido");
+						System.out.println("N√∫mero em formato inv√°lido");
 						confere = true;
 					}
 				} catch (Exception e) {
-					System.out.println("N˙mero em formato inv·lido");
+					System.out.println("N√∫mero em formato inv√°lido");
 					confere = true;
 				}
 			}
@@ -456,7 +457,7 @@ public class CadastroEmAqruivoMain {
 			celularFormatado = (null);
 			System.out.println("Sem telefone. Aperte Enter");
 		} else {
-			System.out.println("OpÁ„o inv·lida! Celular n„o cadastrado!");
+			System.out.println("Op√ß√£o inv√°lida! Celular n√£o cadastrado!");
 		}
 		return celularFormatado;
 	}

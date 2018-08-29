@@ -1,3 +1,4 @@
+
 package CadastroEmArquivo;
 import java.util.Date;
 import java.util.Scanner;
@@ -34,7 +35,7 @@ public class CadastroEmArquivo {
 	@Override
 	public String toString() {
 		CadastroEmArquivo cadastroEmArquivo = this;
-		return "Posição: " + cadastroEmArquivo.getPosicao()+ " - Nome: " + cadastroEmArquivo.getNome()+ 
+		return "PosiÃ§Ã£o: " + cadastroEmArquivo.getPosicao()+ " - Nome: " + cadastroEmArquivo.getNome()+ 
 				" - Data de nascimento: " + cadastroEmArquivo.getDataNascimento()+ " - CPF: " + cadastroEmArquivo.getCpf()+ 
 				" - Celular: " + cadastroEmArquivo.getCelular()+ ".";
 	}
@@ -57,7 +58,7 @@ public class CadastroEmArquivo {
 
 	public String getCelular() {
 		if(celular == null){
-			celular = "Não tem celular cadastrado";
+			celular = "NÃ£o tem celular cadastrado";
 		}		
 		return celular;
 	}
@@ -84,4 +85,3 @@ public class CadastroEmArquivo {
 	}
 
 }
-
