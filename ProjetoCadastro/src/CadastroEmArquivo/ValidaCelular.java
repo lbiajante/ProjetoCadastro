@@ -15,7 +15,7 @@ public class ValidaCelular {
 			while (confere) {
 				try {
 					System.out.println("Digite o celular somente numeros com DDD: ");
-					String cf = entrada.next();
+					String cf = entrada.nextLine().trim();
 					if (cf.matches("[1-9][1-9][2-9][0-9]{8}")) {
 						cf = cpf.formatString(cf, "(##) #####-####");
 						celularFormatado = cf;

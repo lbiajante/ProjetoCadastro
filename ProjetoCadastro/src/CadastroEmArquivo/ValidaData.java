@@ -11,12 +11,13 @@ public class ValidaData {
 		Date dtns = null;
 
 		while (confere) {
+		
 			try {
 				SimpleDateFormat dataFormatIn = new SimpleDateFormat("ddMMyyyy");
 				System.out
 						.println("Digite a data de nascimento com o formato: ddmmaaaa");
 				dataFormatIn.setLenient(false);
-				Date date = dataFormatIn.parse(entrada.next());
+				Date date = dataFormatIn.parse(entrada.nextLine().trim());
 				dtns = date;
 				confere = false;
 			} catch (Exception e) {

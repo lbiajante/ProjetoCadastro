@@ -19,38 +19,53 @@ public class Util {
 	public int verificaCodigo(String codigo) {
 		int cod = 0;
 		boolean confere = true;
-		while (confere) {
-		//	String codigo = entrada.nextLine();
-			try {
-				cod = Integer.parseInt(codigo.trim());				
+
+		try {
+			while (confere) {
+				cod = Integer.parseInt(codigo.trim());
 				if (cod <= 0) {
 					System.out.println("O codigo precisa ser maior que zero");
 					confere = true;
 				} else {
 					confere = false;
 				}
-			} catch (Exception e) {
-				System.out.printf("Voce nao digitou um número inteiro!\n");
 			}
+		} catch (NumberFormatException e) {
+			System.out.printf("Voce nao digitou um número inteiro!\n");
+			cod = 0;
 		}
 		return cod;
 	}
 
 	public String gerarArquivo() {
-		try {			
-			path = textInput("Digite o nome do arquivo a ser criado ou lido") +".txt";
+		boolean confere = true;
+		path = textInput("Digite o nome do arquivo a ser criado ou lido");
+		path = path.trim();
+		while (confere) {
+			if (path.isEmpty() || path.trim().equals("")
+					|| path.trim().equals(null)) {
+				System.out
+						.println("O campo nome do arquivo nao pode ser em branco");
+				path = textInput("Digite o nome do arquivo");
+				confere = true;
+			} else {
+				confere = false;
+			}
+		}
+		path = path + ".txt";
+		try {
 			FileWriter criadorDeArquivo = new FileWriter(path, true);
 			criadorDeArquivo.flush();
 			criadorDeArquivo.close();
 		} catch (IOException e) {
 			System.out.println("Erro na criacao do arquivo");
-		}			
+		}
 		return path;
-	} 
-	
-	public void contarLinhas(String path) {
+	}
+
+	public int contarLinhas(String path) {
 		int numeroLinhas = 0;
-			try {
+		try {
 			File arq = new File(path);
 			long tamanhoCad = arq.length();
 			FileInputStream fs = new FileInputStream(arq);
@@ -66,8 +81,9 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return numeroLinhas;
 	}
-	
+
 	public void escreverNoArquivo(String path, String linha) {
 		try {
 			FileWriter fw = new FileWriter(path, true);

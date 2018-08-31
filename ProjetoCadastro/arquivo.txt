@@ -1,13 +1,21 @@
 Posicao: 001 Nome: le - Data de nascimento: 01/01/2000 - CPF: 264.364.528-69 - Celular: Celular nao cadastrado.
 Posicao: 002 Nome: erika - Data de nascimento: 15/11/1979 - CPF: 309.902.768-56 - Celular: (19) 99189-6352.
 Posicao: 003 Nome: leandro - Data de nascimento: 12/12/2012 - CPF: 123.123.123-12 - Celular: Celular nao cadastrado.
-Posicao: 004 Nome: qwert - Data de nascimento: 12/12/2012 - CPF: 123.123.456-45 - Celular: Celular nao cadastrado.
+Posicao: 004 Nome: qwertyuiop - Data de nascimento: 02/02/2012 - CPF: 264.364.528-69 - Celular: Celular nao cadastrado.
 Posicao: 005 Nome: asdfg - Data de nascimento: 12/12/2012 - CPF: 265.123.456-45 - Celular: (19) 99194-9069.
 Posicao: 006 Nome: zxcvb - Data de nascimento: 12/12/2012 - CPF: 123.456.789-12 - Celular: (19) 99194-9069.
 Posicao: 007 Nome: qazwsx - Data de nascimento: 12/12/2012 - CPF: 231.231.231-45 - Celular: Celular nao cadastrado.
 Posicao: 008 Nome: wsxedc - Data de nascimento: 12/12/2012 - CPF: 123.456.789-12 - Celular: Celular nao cadastrado.
 Posicao: 009 Nome:  - Data de nascimento: 12/12/2012 - CPF: 264.364.525-85 - Celular: Celular nao cadastrado.
 Posicao: 010- Nome: leandro - Data de nascimento: 12/12/2012 - CPF: 243.242.323-42 - Celular: Celular nao cadastrado.
-Posicao: 011- Nome: qwert - Data de nascimento: 12/12/1212 - CPF: 123.123.123-45 - Celular: Celular nao cadastrado.
-Posicao: 012 Nome: le - Data de nascimento: 12/12/2012 - CPF: 123.123.123-45 - Celular: Celular nao cadastrado.
-Posicao: 0 - Nome: ler - Data de nascimento: 12/12/2012 - CPF: 123.123.456-45 - Celular: Celular nao cadastrado.
+Posicao: 011 Nome: le - Data de nascimento: 15/11/1979 - CPF: 264.364.528-69 - Celular: (19) 99194-9069.
+Posicao: 012- Nome: 12 - Data de nascimento: 12/12/2012 - CPF: 121.212.121-21 - Celular: (12) 21212-1212.
+Posicao: 013- Nome: zxcvb - Data de nascimento: 11/12/2002 - CPF: 123.456.789-89 - Celular: Celular nao cadastrado.
+Posicao: 014- Nome: werty - Data de nascimento: 15/11/1979 - CPF: 123.456.789-45 - Celular: Celular nao cadastrado.
+Posicao: 015- Nome: le4 - Data de nascimento: 12/12/2012 - CPF: 264.364.528-69 - Celular: Celular nao cadastrado.
+Posicao: 016- Nome: weq - Data de nascimento: 12/12/2012 - CPF: 123.123.123-45 - Celular: Celular nao cadastrado.
+Posicao: 017- Nome: qwert - Data de nascimento: 02/02/1978 - CPF: 456.456.456-78 - Celular: Celular nao cadastrado.
+Posicao: 018- Nome: qwer - Data de nascimento: 12/12/2012 - CPF: 123.456.789-89 - Celular: Celular nao cadastrado.
+Posicao: 019- Nome: se - Data de nascimento: 12/12/1212 - CPF: 264.364.528-69 - Celular: (19) 99189-6352.
+Posicao: 020- Nome: qwer - Data de nascimento: 12/12/2012 - CPF: 231.231.231-45 - Celular: Celular nao cadastrado.
+Posicao: 021- Nome: qw - Data de nascimento: 12/12/2012 - CPF: 309.902.768-56 - Celular: Celular nao cadastrado.

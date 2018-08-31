@@ -31,6 +31,7 @@ public class Main {
 			System.out.println("-------------------------------------------");
 			String opcao = entrada.next();
 			if (opcao.equals("1")) {
+				System.out.println("");
 				cadastrar.cadastrar(path);
 				execute =  true;
 			} else if (opcao.equals("2")) {
