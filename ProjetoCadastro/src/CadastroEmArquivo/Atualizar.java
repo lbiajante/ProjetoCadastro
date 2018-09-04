@@ -57,6 +57,7 @@ public class Atualizar {
 							if (linha.substring(8, 12).contains(posicao) == true) {
 								verificaSeExiste = 1;
 								cad.setPosicao(cod2);
+								
 								cad.setNome(nome
 										.nome(textInput("Digite o nome atualizado")));
 								cad.setDataNascimento(data.data());

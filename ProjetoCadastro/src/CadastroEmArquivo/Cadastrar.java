@@ -22,7 +22,9 @@ public class Cadastrar {
 			System.out.println("Cadastro de Usuario");
 			int pos = util.contarLinhas(path);
 			cad.setPosicao(pos);			
-			cad.setNome(nome.nome(textInput("Digite o nome")));
+			
+			String label = "Digite o nome";
+			cad.setNome(nome.nome(textInput("Digite o nome"), label));
 			cad.setDataNascimento(data.data());
 			cad.setCpf(cpf.validarCPF());
 			cad.setCelular(celular.formatarCelular());			

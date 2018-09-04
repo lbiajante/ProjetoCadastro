@@ -7,14 +7,14 @@ public class ValidaNome {
 	boolean confere = true;
 //	String verificaNome;
 
-	public String nome (String verificaNome){
+	public String nome (String verificaNome, String label){
 		
 		String nome = verificaNome.trim();
 		while (confere){
 			
 			if (nome.isEmpty()|| nome.trim().equals("")|| nome.trim().equals(null)) {
-				System.out.println("O campo nome precisa ser preenchido");
-				verificaNome = textInput("Digite um nome");
+				System.out.println("O campo precisa ser preenchido");
+				verificaNome = textInput(label);
 				confere = true;
 				
 			} else {
